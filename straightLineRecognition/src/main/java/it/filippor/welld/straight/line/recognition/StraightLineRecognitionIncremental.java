@@ -45,7 +45,8 @@ public class StraightLineRecognitionIncremental {
 		}
 		return obj.getLines(n);
 	}
-
+	
+	
 	
 
 	

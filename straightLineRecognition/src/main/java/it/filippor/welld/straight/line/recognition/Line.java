@@ -42,9 +42,7 @@ public class Line extends AbstractCollection<Point>{
 		}
 	}
 
-	public Collection<Point> getPoints() {
-		return data;
-	}
+	
 	
 	@Override
 	public boolean add(Point p) {

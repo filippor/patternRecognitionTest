@@ -85,9 +85,10 @@ class StraightLineRecognitionTest {
 		assertThat(result).allMatch(line -> line.size() >= 1);
 
 		Stream<List<Point>> resultWithLineSorted = result.stream()
-				.map(l -> l.getPoints().stream().sorted().collect(toList()));
+				.map(l -> l.stream().sorted().collect(toList()));
 		assertThat(resultWithLineSorted).containsExactlyInAnyOrder(expectWithLineSorted);
 	}
+	
 	@ParameterizedTest
 	@MethodSource("argumentProvider")
 	void testFindstrightLineIncremental(Point[] space, int n, Point[][] expect) {
@@ -104,7 +105,7 @@ class StraightLineRecognitionTest {
 		assertThat(result).allMatch(line -> line.size() >= 1);
 		
 		Stream<List<Point>> resultWithLineSorted = result.stream()
-				.map(l -> l.getPoints().stream().sorted().collect(toList()));
+				.map(l -> l.stream().sorted().collect(toList()));
 		assertThat(resultWithLineSorted).containsExactlyInAnyOrder(expectWithLineSorted);
 	}
 
