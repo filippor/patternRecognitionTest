@@ -42,7 +42,13 @@ class StraightLineRecognitionTest {
 						new Point[][] { { new Point(0, 0), new Point(1, 2), new Point(2, 4) }, }),
 
 				Arguments.of(new Point[] { new Point(1, 0), new Point(2, 2), new Point(3, 4) }, 3,
-						new Point[][] { { new Point(1, 0), new Point(2, 2), new Point(3, 4) }, })
+						new Point[][] { { new Point(1, 0), new Point(2, 2), new Point(3, 4) }, }),
+				
+				Arguments.of(new Point[] { new Point(0.1, 0), new Point(0.2, 2), new Point(0.3, 4) }, 3,
+						new Point[][] { { new Point(0.1, 0), new Point(0.2, 2), new Point(0.3, 4) }, }),
+
+				Arguments.of(new Point[] { new Point(-1, 0), new Point(-2, 2), new Point(-3, 4),new Point(-4,2) }, 3,
+						new Point[][] { { new Point(-1, 0), new Point(-2, 2), new Point(-3, 4) }, })
 
 		);
 	}

@@ -8,6 +8,8 @@ public class Line extends ArrayList<Point> {
 
 	private static final long serialVersionUID = 1L;
 	
+	private static final double TOLERANCE = 0.00001d; 
+	
 	public static Line newLine(Point p1) {
 		return new Line(p1);
 	}
@@ -37,7 +39,7 @@ public class Line extends ArrayList<Point> {
 		
 		double delta = p1.y - (p1.x * slope) ;
 		
-		return p.y == (p.x*slope) + delta;
+		return Math.abs( p.y - ((p.x*slope) + delta))<TOLERANCE;
 	}
 	
 
