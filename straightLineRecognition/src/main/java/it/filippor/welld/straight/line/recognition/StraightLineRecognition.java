@@ -4,31 +4,33 @@ import static java.util.stream.Collectors.toList;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 public class StraightLineRecognition {
-	public Collection<Line> findstrightLine(Collection<Point> spaces, int n) {
-		var lines = new ArrayList<Line>();
-		ArrayList<Point> tmpSpace = new ArrayList<>(spaces);
+	public static Collection<Line> findstrightLine(List<Point> space, int n) {
+		if(space.size()<2)return Collections.emptyList();
 		
-		for (int i = tmpSpace.size() - 1; i >= 0; i--) {
-			Point p1 = tmpSpace.remove(i);
-			boolean added = false;
+		var lines = new ArrayList<Line>();
+		lines.add(Line.newLine(space.get(0), space.get(1)));
+
+		for (int i = 2; i < space.size(); i++) {
+			var p1 = space.get(i);
+
 			for (int j = lines.size() - 1; j >= 0; j--) {
 				var line = lines.get(j);
-				if (line.canAdd(p1)) {
-					line.add(p1);
-					added = true;
-				}else {
+				if (!line.add(p1)) {
 					for (Point point : line) {
-						lines.add(Line.newLine(p1,point));
+						Line l1 = Line.newLine(point, p1);
+						if (lines.stream().noneMatch(l2 -> l2.hasSameProperty(l1))) {
+							lines.add(l1);
+						}
 					}
 				}
 			}
-			if (!added) {
-				lines.add(Line.newLine(p1));
-			}
+
 		}
 
-		return lines.stream().filter(l->l.size()>=n).collect(toList());
+		return lines.stream().filter(l -> l.size() >= n).collect(toList());
 	}
 }
