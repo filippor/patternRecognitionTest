@@ -88,5 +88,24 @@ class StraightLineRecognitionTest {
 				.map(l -> l.getPoints().stream().sorted().collect(toList()));
 		assertThat(resultWithLineSorted).containsExactlyInAnyOrder(expectWithLineSorted);
 	}
+	@ParameterizedTest
+	@MethodSource("argumentProvider")
+	void testFindstrightLineIncremental(Point[] space, int n, Point[][] expect) {
+		
+		var obj = new StraightLineRecognitionIncremental();
+		for (Point point : Arrays.asList(space)) {
+			obj.addPoint(point);
+		}
+		var result = obj.getLines(n);
+		
+		@SuppressWarnings("unchecked")
+		List<Point>[] expectWithLineSorted = Stream.of(expect).map(l -> Stream.of(l).sorted().collect(toList()))
+		.collect(Collectors.toList()).toArray(new List[expect.length]);
+		assertThat(result).allMatch(line -> line.size() >= 1);
+		
+		Stream<List<Point>> resultWithLineSorted = result.stream()
+				.map(l -> l.getPoints().stream().sorted().collect(toList()));
+		assertThat(resultWithLineSorted).containsExactlyInAnyOrder(expectWithLineSorted);
+	}
 
 }
