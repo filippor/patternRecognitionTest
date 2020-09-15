@@ -31,12 +31,13 @@ public class Line extends ArrayList<Point> {
 		var it = this.iterator();
 		var p1 = it.next();
 		var p2 = it.next();
+		if(p1.x == p2.x)
+			return p1.x == p.x;
+		double slope = (p1.y - p2.y)/(p1.x - p2.x) ;
 		
-		double slope = (p1.x - p2.x) / (p1.y - p2.y);
+		double delta = p1.y - (p1.x * slope) ;
 		
-		double delta = (p1.x * slope) - p1.y;
-		
-		return p.y == p.x*slope + delta;
+		return p.y == (p.x*slope) + delta;
 	}
 	
 

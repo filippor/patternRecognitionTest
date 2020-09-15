@@ -27,9 +27,22 @@ class StraightLineRecognitionTest {
 						new Point[][] { { new Point(1, 1), new Point(2, 2), new Point(3, 3) } }),
 
 				Arguments.of(new Point[] { new Point(1, 1), new Point(2, 2), new Point(3, 3) }, 3,
-						new Point[][] { { new Point(1, 1), new Point(2, 2), new Point(3, 3) }, })
+						new Point[][] { { new Point(1, 1), new Point(2, 2), new Point(3, 3) }, }),
+
+				Arguments.of(new Point[] { new Point(1, 2), new Point(2, 2), new Point(3, 2) }, 3,
+						new Point[][] { { new Point(1, 2), new Point(2, 2), new Point(3, 2) }, }),
+
+				Arguments.of(new Point[] { new Point(2, 1), new Point(2, 2), new Point(2, 3) }, 3,
+						new Point[][] { { new Point(2, 1), new Point(2, 2), new Point(2, 3) }, }),
+
+				Arguments.of(new Point[] { new Point(1, 2), new Point(2, 3), new Point(3, 4) }, 3,
+						new Point[][] { { new Point(1, 2), new Point(2, 3), new Point(3, 4) }, }),
 				
-				
+				Arguments.of(new Point[] { new Point(0, 0), new Point(1, 2), new Point(2, 4) }, 3,
+						new Point[][] { { new Point(0, 0), new Point(1, 2), new Point(2, 4) }, }),
+
+				Arguments.of(new Point[] { new Point(1, 0), new Point(2, 2), new Point(3, 4) }, 3,
+						new Point[][] { { new Point(1, 0), new Point(2, 2), new Point(3, 4) }, })
 
 		);
 	}
@@ -46,8 +59,9 @@ class StraightLineRecognitionTest {
 				.collect(Collectors.toList()).toArray(new List[expect.length]);
 		assertThat(result).allMatch(line -> line.size() >= 1);
 
-		assertThat(result.stream().map(l -> l.getPoints().stream().sorted().collect(toList())))
-				.containsExactlyInAnyOrder(expectWithLineSorted);
+		Stream<List<Point>> resultWithLineSorted = result.stream()
+				.map(l -> l.getPoints().stream().sorted().collect(toList()));
+		assertThat(resultWithLineSorted).containsExactlyInAnyOrder(expectWithLineSorted);
 	}
 
 }

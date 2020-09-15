@@ -14,8 +14,17 @@ public class Point implements Comparable<Point> {
 
 	@Override
 	public int compareTo(Point o) {
-		double v = (x == o.x) ? y - o.y : x - o.y;
-		return v==0?0:v>0?1:-1;
+		double v;
+		if (x == o.x)
+			v = y - o.y;
+		else
+			v = x - o.x;
+		if (v==0)
+			return 0;
+		else if (v>0d)
+			return 1;
+		else
+			return -1;
 	}
 
 	@Override
