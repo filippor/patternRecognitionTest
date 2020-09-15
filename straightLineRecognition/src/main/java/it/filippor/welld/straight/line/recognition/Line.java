@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Objects;
 
 public class Line extends AbstractCollection<Point>{
 
@@ -30,14 +31,14 @@ public class Line extends AbstractCollection<Point>{
 		var it = this.iterator();
 		var p11 = it.next();
 		var p21 = it.next();
-		if(p11.x == p21.x) {
+		if(p11.getX() == p21.getX()) {
 			vertical = true;
 			slope = 0;
-			delta = p11.x;
+			delta = p11.getX();
 		}else {
 			vertical = false;
-			slope = (p11.y - p21.y)/(p11.x - p21.x);
-			delta = p11.y - (p11.x * slope);
+			slope = (p11.getY() - p21.getY())/(p11.getX() - p21.getX());
+			delta = p11.getY() - (p11.getX() * slope);
 		}
 	}
 
@@ -53,8 +54,8 @@ public class Line extends AbstractCollection<Point>{
 	}
 	
 	public boolean canAdd(Point p) {
-		if(vertical) return p.x == delta;
-		return Math.abs( p.y - ((p.x*slope) + delta))<TOLERANCE;
+		if(vertical) return p.getX() == delta;
+		return Math.abs( p.getY() - ((p.getX()*slope) + delta))<TOLERANCE;
 	}
 
 	public Point getFirst() {
@@ -78,6 +79,33 @@ public class Line extends AbstractCollection<Point>{
 	@Override
 	public int size() {
 		return data.size();
+	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(data, delta, slope, vertical);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Line other = (Line) obj;
+		return Objects.equals(data, other.data)
+				&& Double.doubleToLongBits(delta) == Double.doubleToLongBits(other.delta)
+				&& Double.doubleToLongBits(slope) == Double.doubleToLongBits(other.slope) && vertical == other.vertical;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Line [" + data + "]";
 	}
 
 	
