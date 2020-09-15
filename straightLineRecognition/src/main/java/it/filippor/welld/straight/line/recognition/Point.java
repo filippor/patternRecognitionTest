@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class Point implements Comparable<Point> {
 
-	int x;
-	int y;
+	double x;
+	double y;
 
 	public Point(int x, int y) {
 		this.x = x;
@@ -14,7 +14,8 @@ public class Point implements Comparable<Point> {
 
 	@Override
 	public int compareTo(Point o) {
-		return (x == o.x) ? y - o.y : x - o.y;
+		double v = (x == o.x) ? y - o.y : x - o.y;
+		return v==0?0:v>0?1:-1;
 	}
 
 	@Override
