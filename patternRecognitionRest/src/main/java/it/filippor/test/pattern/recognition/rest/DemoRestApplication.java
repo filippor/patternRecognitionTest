@@ -1,4 +1,4 @@
-package it.filippor.welld.test.pattern.recognition.rest;
+package it.filippor.test.pattern.recognition.rest;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

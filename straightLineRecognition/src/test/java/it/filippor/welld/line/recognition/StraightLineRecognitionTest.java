@@ -1,4 +1,4 @@
-package it.filippor.welld.straight.line.recognition;
+package it.filippor.welld.line.recognition;
 
 import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,6 +11,10 @@ import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+
+import it.filippor.straight.line.recognition.Point;
+import it.filippor.straight.line.recognition.StraightLineRecognition;
+import it.filippor.straight.line.recognition.StraightLineRecognitionIncremental;
 
 class StraightLineRecognitionTest {
 

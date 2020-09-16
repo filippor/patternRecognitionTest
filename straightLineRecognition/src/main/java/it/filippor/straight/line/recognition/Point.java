@@ -1,4 +1,4 @@
-package it.filippor.welld.straight.line.recognition;
+package it.filippor.straight.line.recognition;
 
 import java.util.Objects;
 

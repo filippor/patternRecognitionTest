@@ -1,4 +1,4 @@
-package it.filippor.welld.test.pattern.recognition.rest.health;
+package it.filippor.test.pattern.recognition.rest.health;
 
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;

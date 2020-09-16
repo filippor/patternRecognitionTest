@@ -3,12 +3,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>it.filippor.welld.test.pattern.recognition</groupId>
+		<groupId>it.filippor.test.pattern.recognition</groupId>
 		<artifactId>pattern.recognition</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>patternRecognitionRest</artifactId>
-	<packaging>war</packaging>
 	<properties>
 		<version.wildfly>19.1.0.Final</version.wildfly>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
@@ -26,7 +25,7 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>it.filippor.welld.test.pattern.recognition</groupId>
+			<groupId>it.filippor.test.pattern.recognition</groupId>
 			<artifactId>straightLineRecognition</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
@@ -37,9 +36,10 @@
 	<profiles>
 		<profile>
 			<id>wildfly</id>
-			<activation>
+			
+			<!-- <activation>
 				<activeByDefault>true</activeByDefault>
-			</activation>
+			</activation> -->
 			<build>
 				<plugins>
 					<plugin>
@@ -84,6 +84,80 @@
 					<url>https://maven.repository.redhat.com/ga/</url>
 				</repository>
 			</repositories>
+		</profile>
+
+		<profile>
+			<id>quarkus</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<properties>
+				<maven.compiler.parameters>true</maven.compiler.parameters>
+				<maven.compiler.source>11</maven.compiler.source>
+				<maven.compiler.target>11</maven.compiler.target>
+				<quarkus-plugin.version>1.7.3.Final</quarkus-plugin.version>
+				<quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
+				<quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
+				<quarkus.platform.version>1.7.3.Final</quarkus.platform.version>
+			</properties>
+			<dependencyManagement>
+				<dependencies>
+					<dependency>
+						<groupId>${quarkus.platform.group-id}</groupId>
+						<artifactId>${quarkus.platform.artifact-id}</artifactId>
+						<version>${quarkus.platform.version}</version>
+						<type>pom</type>
+						<scope>import</scope>
+					</dependency>
+				</dependencies>
+			</dependencyManagement>
+
+			<dependencies>
+				<dependency>
+					<groupId>io.quarkus</groupId>
+					<artifactId>quarkus-resteasy</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>io.quarkus</groupId>
+					<artifactId>quarkus-junit5</artifactId>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>io.rest-assured</groupId>
+					<artifactId>rest-assured</artifactId>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>io.quarkus</groupId>
+					<artifactId>quarkus-smallrye-openapi</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>io.quarkus</groupId>
+					<artifactId>quarkus-smallrye-health</artifactId>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>io.quarkus</groupId>
+						<artifactId>quarkus-maven-plugin</artifactId>
+						<version>${quarkus-plugin.version}</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>generate-code</goal>
+									<goal>generate-code-tests</goal>
+									<goal>build</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					
+					
+				</plugins>
+			</build>
+
 		</profile>
 
 	</profiles>

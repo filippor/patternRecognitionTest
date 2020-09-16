@@ -1,4 +1,4 @@
-package it.filippor.welld.test.pattern.recognition.rest;
+package it.filippor.test.pattern.recognition.rest;
 
 import javax.inject.Singleton;
 import javax.ws.rs.GET;
