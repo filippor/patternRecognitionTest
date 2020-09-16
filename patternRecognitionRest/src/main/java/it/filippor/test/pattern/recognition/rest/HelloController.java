@@ -1,8 +1,11 @@
 package it.filippor.test.pattern.recognition.rest;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+
+import it.filippor.straight.line.recognition.StraightLineRecognitionIncremental;
 
 /**
  *
@@ -10,9 +13,12 @@ import javax.ws.rs.Path;
 @Path("/hello")
 @Singleton
 public class HelloController {
-
-    @GET
+	@Inject
+	StraightLineRecognitionIncremental service;
+    
+	@GET
     public String sayHello() {
-        return "Hello World";
+    	
+        return "Hello World " + service.getLines(2);
     }
 }

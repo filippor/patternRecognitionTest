@@ -7,6 +7,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.inject.Singleton;
+
+@Singleton
 public class StraightLineRecognitionIncremental {
 	LinkedList<Point> space = new LinkedList<Point>();
 	LinkedList<Line> lines = new LinkedList<Line>();
