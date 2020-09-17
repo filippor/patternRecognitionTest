@@ -14,11 +14,16 @@ import it.filippor.straight.line.recognition.StraightLineRecognitionIncremental;
 /**
  *
  */
-@Path("/hello")
+@Path("data")
 public class SpaceControllerImplementation implements SpaceController {
-	@Inject
+	
 	StraightLineRecognitionIncremental service;
-
+	
+	@Inject
+	public SpaceControllerImplementation(StraightLineRecognitionIncremental service) {
+		this.service = service;
+	}
+	
 	@Override
 	public Response addPoint(Point p) {
 		var domainP = p.toDomainPoint();
@@ -43,7 +48,8 @@ public class SpaceControllerImplementation implements SpaceController {
 	}
 
 	@Override
-	public void clearSpace() {
+	public Response clearSpace() {
 		service.clear();
+		return Response.ok().build();
 	}
 }

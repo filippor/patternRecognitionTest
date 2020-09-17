@@ -61,6 +61,6 @@ public interface SpaceController {
 	@APIResponses(value = {
 			@APIResponse(responseCode = "200", description = "all point removed")
 			})
-	void clearSpace();
+	Response clearSpace();
 
 }
