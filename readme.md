@@ -8,7 +8,7 @@ The generation of the executable jar file can be performed by issuing the follow
 
     mvn clean package
 
-This will create an executable jar file **patternRecognition-wildfly.jar** within the _target_ maven folder. This can be started by executing the following command
+This will create an executable jar file **patternRecognition-runner.jar** within the _target_ maven folder. This can be started by executing the following command
 
     java -jar patternRecognitionRest/target/patternRecognition-runner.jar
 
