@@ -59,7 +59,7 @@
 		</dependency>
 		<dependency>
 			<groupId>it.filippor.test.pattern.recognition</groupId>
-			<artifactId>straightLineRecognition</artifactId>
+			<artifactId>patternRecognitionDomain</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 

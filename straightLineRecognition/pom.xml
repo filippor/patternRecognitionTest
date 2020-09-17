@@ -7,8 +7,8 @@
 		<artifactId>pattern.recognition</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>straightLineRecognition</artifactId>
-	<name>straightLineRecognition</name>
+	<artifactId>patternRecognitionDomain</artifactId>
+	<name>patternRecognitionDomain</name>
 
 	<properties>
 		<maven.compiler.target>11</maven.compiler.target>

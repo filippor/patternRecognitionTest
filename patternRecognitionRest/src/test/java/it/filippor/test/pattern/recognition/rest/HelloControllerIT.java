@@ -1,8 +1,6 @@
 package it.filippor.test.pattern.recognition.rest;
 
 
-import static org.hamcrest.CoreMatchers.is;
-
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 

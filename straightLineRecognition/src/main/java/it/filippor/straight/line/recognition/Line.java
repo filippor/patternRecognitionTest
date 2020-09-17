@@ -9,7 +9,6 @@ import java.util.Objects;
 
 public class Line extends AbstractCollection<Point>{
 
-	private static final double TOLERANCE = 0.0000001d;
 
 	private final double slope;
 
@@ -53,7 +52,7 @@ public class Line extends AbstractCollection<Point>{
 	
 	public boolean canAdd(Point p) {
 		if(vertical) return p.getX() == delta;
-		return Math.abs( p.getY() - ((p.getX()*slope) + delta))<TOLERANCE;
+		return p.getY() == ((p.getX()*slope) + delta);
 	}
 
 	public Point getFirst() {
@@ -63,8 +62,8 @@ public class Line extends AbstractCollection<Point>{
 
 	public boolean hasSameProperty(Line l1) {
 		return vertical == l1.vertical
-			&& Math.abs( slope - l1.slope) < TOLERANCE
-			&& Math.abs( delta - l1.delta) < TOLERANCE;
+			&& slope == l1.slope
+			&&  delta == l1.delta;
 	}
 
 
