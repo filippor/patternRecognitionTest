@@ -50,9 +50,7 @@ public class Line extends AbstractCollection<Point> {
 		return (
 					(Double.isFinite(slope)  && slope == l1.slope)
 					||(Double.isInfinite(l1.slope))
-				)
-				
-				&& delta == l1.delta;
+				)&& delta == l1.delta;
 	}
 
 	@Override
@@ -79,9 +77,7 @@ public class Line extends AbstractCollection<Point> {
 		if (getClass() != obj.getClass())
 			return false;
 		Line other = (Line) obj;
-		return Objects.equals(data, other.data)
-				&& Double.doubleToLongBits(delta) == Double.doubleToLongBits(other.delta)
-				&& Double.doubleToLongBits(slope) == Double.doubleToLongBits(other.slope);
+		return Objects.equals(data, other.data);
 	}
 
 	@Override
