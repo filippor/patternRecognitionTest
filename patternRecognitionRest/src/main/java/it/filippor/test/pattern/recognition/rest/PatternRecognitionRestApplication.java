@@ -6,6 +6,6 @@ import javax.ws.rs.core.Application;
 /**
  *
  */
-@ApplicationPath("/")
+@ApplicationPath("/data")
 public class PatternRecognitionRestApplication extends Application {
 }

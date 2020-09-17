@@ -14,7 +14,7 @@ import it.filippor.straight.line.recognition.StraightLineRecognitionIncremental;
 /**
  *
  */
-@Path("data")
+@Path("/")
 public class SpaceControllerImplementation implements SpaceController {
 	
 	StraightLineRecognitionIncremental service;
