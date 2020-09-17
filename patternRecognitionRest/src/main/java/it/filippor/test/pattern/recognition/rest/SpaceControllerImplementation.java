@@ -41,7 +41,6 @@ public class SpaceControllerImplementation implements SpaceController {
 	@Override
 	public Collection<Collection<Point>> getLines(
 			 int n) {
-		System.out.println(n);
 		return service.getLines(n).stream()
 				.map(line -> line.stream().map(Point::fromDomainPoint).collect(toUnmodifiableList()))
 				.collect(toUnmodifiableList());
