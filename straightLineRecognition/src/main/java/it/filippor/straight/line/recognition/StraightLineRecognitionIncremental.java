@@ -1,8 +1,9 @@
 package it.filippor.straight.line.recognition;
 
-import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toUnmodifiableList;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,6 +18,7 @@ public class StraightLineRecognitionIncremental {
 	public boolean contains(Point p) {
 		return space.contains(p);
 	}
+
 	public boolean addPoint(Point p) {
 		if (space.contains(p))
 			return false;
@@ -32,25 +34,26 @@ public class StraightLineRecognitionIncremental {
 		return space.add(p);
 	}
 
-	public Collection<Line> getLines(int n) {
-		return lines.stream().filter(l -> l.size() >= n).collect(toList());
+	public Collection<Collection<Point>> getLines(int n) {
+		return lines.stream().filter(l -> l.size() >= n).map(Collections::unmodifiableCollection)
+				.collect(toUnmodifiableList());
 	}
-	
+
 	public void clear() {
 		space.clear();
 		lines.clear();
 	}
 
-	public static Collection<Line> findstrightLine(List<Point> space, int n) {
+	public static Collection<Collection<Point>> findstrightLine(List<Point> space, int n) {
 		var obj = new StraightLineRecognitionIncremental();
 		for (Point point : space) {
 			obj.addPoint(point);
 		}
 		return obj.getLines(n);
 	}
-	
-	
-	
 
-	
+	public Collection<Point> getPoints() {
+		return Collections.unmodifiableCollection(space);
+	}
+
 }

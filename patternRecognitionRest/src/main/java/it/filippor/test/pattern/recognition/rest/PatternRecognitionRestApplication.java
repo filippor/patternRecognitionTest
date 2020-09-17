@@ -7,5 +7,5 @@ import javax.ws.rs.core.Application;
  *
  */
 @ApplicationPath("/data")
-public class DemoRestApplication extends Application {
+public class PatternRecognitionRestApplication extends Application {
 }

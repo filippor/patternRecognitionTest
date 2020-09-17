@@ -112,5 +112,7 @@ class StraightLineRecognitionTest {
 				.map(l -> l.stream().sorted().collect(toList()));
 		assertThat(resultWithLineSorted).containsExactlyInAnyOrder(expectWithLineSorted);
 	}
+	
+	
 
 }
