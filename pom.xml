@@ -9,7 +9,7 @@
 	<modules>
 		<module>patternRecognitionDomain</module>
 		<module>patternRecognitionRest</module>
-		<module>patternRecognitionGrettyRest</module>
+		
 	</modules>
 
 	<properties>
