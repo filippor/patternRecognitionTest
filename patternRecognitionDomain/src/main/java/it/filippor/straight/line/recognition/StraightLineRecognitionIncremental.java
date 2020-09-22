@@ -15,11 +15,11 @@ public class StraightLineRecognitionIncremental {
 	LinkedList<Point> space = new LinkedList<Point>();
 	LinkedList<Line> lines = new LinkedList<Line>();
 
-	public boolean contains(Point p) {
+	public synchronized boolean contains(Point p) {
 		return space.contains(p);
 	}
 
-	public boolean addPoint(Point p) {
+	public synchronized boolean addPoint(Point p) {
 		if (space.contains(p))
 			return false;
 
@@ -34,7 +34,7 @@ public class StraightLineRecognitionIncremental {
 		return space.add(p);
 	}
 
-	public Collection<Collection<Point>> getLines(int n) {
+	public  Collection<Collection<Point>> getLines(int n) {
 		return lines.stream().filter(l -> l.size() >= n).map(Collections::unmodifiableCollection)
 				.collect(toUnmodifiableList());
 	}
@@ -52,7 +52,7 @@ public class StraightLineRecognitionIncremental {
 		return obj.getLines(n);
 	}
 
-	public Collection<Point> getPoints() {
+	public synchronized Collection<Point> getPoints() {
 		return Collections.unmodifiableCollection(space);
 	}
 
